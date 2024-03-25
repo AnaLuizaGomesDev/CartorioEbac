@@ -327,8 +327,7 @@ int main()//Função do menu principal
     	    registrar();
 			adicionar_nome();
 			break;	
-    
-    		    
+       		    
     		case 2:
     		consultar();
     		consultar_novo();
