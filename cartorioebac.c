@@ -298,9 +298,44 @@ int deletar_novo()//Função responsável por perguntar se deseja deletar outro 
    }
 }//fim da função
 
+int sair_sistema()//inicio da função
+{
+    setlocale(LC_ALL, "Portuguese_Brazil.1252");//definindo a linguagem
+	
+	char opcao;
+	int sair=1;
+	//atribuindo as variáveis
+	
+	while(sair){
+	    system("cls");
+    	printf("Deseja sair do sistema?\n\n");//pergunta se deseja consultar um novo usuario
+    	printf("Digite 's' ou 'n':");
+    	scanf(" %c", &opcao);//armazena a resposta
+    	    
+    	    if(opcao == 'n' || opcao =='N')
+			{
+				system("cls");
+    	    	sair= 0;
+    	    	printf("Voltando para o Menu Principal...\n\n");
+    	    	system("pause");
+    	    	return 0;//retorna 0 para continuar no menu principal
+			}
+			else if(opcao == 's' || opcao == 'S')
+			{
+                return 1;//retorna 1 indicando saida do sistema
+			}
+			else
+			{
+			    system("cls");
+                printf("Opcao indisponivel. Por favor, escolha 's' para sim ou 'n' para nao.\n\n");//caso a opcao nao esteja dentro do esperado
+                system("pause");
+            }
+   }
+}//fim da função
+
 int main()//Função do menu principal
 {//inicio da função
-	char opcao_registro;
+
 	int opcao=0; //definindo variáveis
 	int x=1;
 	
@@ -314,8 +349,9 @@ int main()//Função do menu principal
 	    printf("Escolha a opcao desejada do menu:\n\n");
     	printf("\t1 - Registrar nomes\n");
     	printf("\t2 - Consultar nomes\n");
-    	printf("\t3 - Deletar nomes\n\n");//fim do menu
-    	printf("Opcao: ");
+    	printf("\t3 - Deletar nomes\n");
+		printf("\t4 - Sair do sistema\n\n");
+    	printf("Opcao: ");//fim do menu
 	
     	scanf("%d", &opcao);//armazenando a escolha do usuário
 	
@@ -337,6 +373,15 @@ int main()//Função do menu principal
     		deletar();
     		deletar_novo();
     		break;
+    		
+    		case 4:
+    		if (sair_sistema()) {
+    			    system("cls");
+                    printf("Saindo do sistema...\n\n");
+                    system("pause");
+                    return 0; // Sai do programa
+                }
+    	    break;
     		    
     		default:
     		printf("Essa opcao nao esta disponivel!\n");
@@ -345,4 +390,5 @@ int main()//Função do menu principal
     		//fim da seleção
 		}
     }
+    return 0;
 }//fim da função
